@@ -7,6 +7,7 @@ local_authorities = ['local-authority-eng','local-authority-nir', 'local-authori
 local_authorities.each do |local_authority|
   self.instance_variable_set("@#{local_authority.underscore}".to_sym, registers_client.get_register(local_authority, 'beta'))
 end
+@local_authority_registers = [@local_authority_eng, @local_authority_nir, @local_authority_sct, @principal_local_authority ]
 
 
 render 'index'

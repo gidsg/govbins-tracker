@@ -1,4 +1,7 @@
 <h1>Hello world</h1>
 <p>
-<%= @local_authority_eng.to_yaml %>
+<% @local_authority_registers.each do |la| %>
+<% register_name = la.get_register_definition.item.value['register'] %>
+  <%= register_name %>
+<% end %>
 </p>
