@@ -1,7 +1,19 @@
-<h1>Hello world</h1>
-<p>
+<table>
+<thead>
+<tr>
+<th>Curie</th>
+<th>Name</th>
+</tr>
+</thead>
 <% @local_authority_registers.each do |la| %>
 <% register_name = la.get_register_definition.item.value['register'] %>
-  <%= register_name %>
+<tbody>
+  <% la.get_records.each do |r| %>
+<tr>
+    <td><%=register_name%>:<%=r.entry.key%></td>
+    <td><%=r.item.value['name']%></td>
+</tr>
+</tbody>
+  <% end%>
 <% end %>
 </p>
