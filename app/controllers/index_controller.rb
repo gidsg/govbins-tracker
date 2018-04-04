@@ -1,7 +1,13 @@
 require 'register_client_manager'  
+require 'octokit'
 class IndexController < ActionController::Base
 
 def show
+client = Octokit::Client.new(
+client_id:  ENV['GITHUB_CLIENT_ID'],
+client_secret: ENV['GITHUB_CLIENT_SECRET'])
+user = Octokit.user 'gidsg'
+puts user.name
 registers_client = RegistersClient::RegisterClientManager.new
 local_authorities = ['local-authority-eng','local-authority-nir', 'local-authority-sct', 'principal-local-authority']
 local_authorities.each do |local_authority|
