@@ -10,14 +10,15 @@
 <% @local_authority_registers.each do |la| %>
 <% register_name = la.get_register_definition.item.value['register'] %>
 <tbody>
-  <% la.get_records.each do |r| %>
+  <% la.get_records.sort_by{|r| r.entry.key}.each do |r| %>
   <% name = r.item.value['name'] %>
   <% has_bin = has_bin?(@image_path_matched_to_name, name) %>
+  <% img_tag = image_tag(image_path(@image_path_matched_to_name, name), height: '40', width: '30') if has_bin %>
 <tr>
     <td><%=register_name%>:<%=r.entry.key%></td>
     <td><%=name%></td>
     <td><%=has_bin ? '✅': '❌'%></td>
-    <td><%=image_tag(image_path(@image_path_matched_to_name, name), height: '40', width: '30') if image_path(@image_path_matched_to_name, name) %></td>
+    <td><%=link_to_if has_bin, img_tag, image_path(@image_path_matched_to_name, name), target: '_blank' %></td>
 </tr>
 </tbody>
   <% end%>
