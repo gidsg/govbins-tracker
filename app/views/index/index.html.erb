@@ -3,15 +3,21 @@
 <tr>
 <th>Curie</th>
 <th>Name</th>
+<th>Has Bin?</th>
+<th>Bin Pic</th>
 </tr>
 </thead>
 <% @local_authority_registers.each do |la| %>
 <% register_name = la.get_register_definition.item.value['register'] %>
 <tbody>
   <% la.get_records.each do |r| %>
+  <% name = r.item.value['name'] %>
+  <% has_bin = has_bin?(@image_path_matched_to_name, name) %>
 <tr>
     <td><%=register_name%>:<%=r.entry.key%></td>
-    <td><%=r.item.value['name']%></td>
+    <td><%=name%></td>
+    <td><%=has_bin ? '✅': '❌'%></td>
+    <td><%=image_path(@image_path_matched_to_name, name) %></td>
 </tr>
 </tbody>
   <% end%>
