@@ -1,6 +1,6 @@
 require 'register_client_manager'
 require 'octokit'
-class IndexController < ActionController::Base
+class IndexController < ApplicationController
   def show
     Octokit::Client.new(
       client_id:  ENV['GITHUB_CLIENT_ID'],
@@ -20,6 +20,6 @@ class IndexController < ActionController::Base
     @local_authority_registers = [@local_authority_eng, @local_authority_nir, @local_authority_sct, @principal_local_authority]
 
 
-    render 'index'
+    render :show
   end
 end

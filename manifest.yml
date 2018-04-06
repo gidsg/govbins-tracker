@@ -1,0 +1,6 @@
+---
+applications:
+- name: govbins-matcher
+  memory: 256M
+  instances: 1
+  buildpack: ruby_buildpack
