@@ -1,6 +1,6 @@
 ---
 applications:
-- name: govbins-matcher
+- name: govbins-tracker
   memory: 256M
   instances: 1
   buildpack: ruby_buildpack

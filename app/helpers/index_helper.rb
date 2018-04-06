@@ -1,10 +1,10 @@
 module IndexHelper
   def has_bin?(image_paths_matched_to_name, name)
-    image_paths_matched_to_name.any? { |ip| ip[:name] == name }
+    image_paths_matched_to_name.any? { |ip| ip[:name].casecmp(name).zero? }
   end
 
   def image_path(image_paths_matched_to_name, name)
-    image_paths_matched_to_name.find { |ip| ip[:name] == name }&.dig(:path)
+    image_paths_matched_to_name.find { |ip| ip[:name].casecmp(name).zero? }&.dig(:path)
   end
 
   def register_bin_stats(register, image_paths_matched_to_name)
