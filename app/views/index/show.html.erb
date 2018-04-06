@@ -4,7 +4,7 @@
 <% register_url = la.instance_variable_get(:@register_url)%>
 <table>
 <thead>
-<th class="heading-large" colspan="1"><%=register_name%></th> 
+<th class="heading-large" colspan="1"><%=link_to register_name, register_url.to_s%></th> 
 <%stats=register_bin_stats(la, @image_path_matched_to_name)%>
 <th class="heading-medium" colspan="3">Local authorities: <%=stats[:register_count]%>, Bins: <%=stats[:has_bin_count] %>, Coverage: <%=stats[:percentage_complete]%></td>
 <tr>
