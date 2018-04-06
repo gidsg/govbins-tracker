@@ -8,6 +8,7 @@ class IndexController < ApplicationController
     )
     contents = Octokit.contents('HarryTrimble/govbins.uk', path: 'images')
     image_paths = contents.select { |e| e.download_url.to_s.end_with? '.jpg' }.map(&:download_url)
+    puts("IMAGE COUNT #{image_paths.length}")
     @image_path_matched_to_name = image_paths.map { |ip|
       { name: ip.tr('-', ' ').split('/images/')[1].split('.')[0], path: ip }
     }

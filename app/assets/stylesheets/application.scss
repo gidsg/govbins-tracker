@@ -31,14 +31,8 @@
 @import "typography";                             // Core bold and heading mixins, also external links
 @import "shims";                                  // Inline block mixin, clearfix placeholder
 
-// Mixins to generate components (chunks of UI)
-@import "design-patterns/alpha-beta";
-@import "design-patterns/buttons";
-@import "design-patterns/breadcrumbs";
-
-// Functions
-@import "url-helpers";                            // Function to output image-url, or prefixed path (Rails and Compass only)
- @import 'font_stack';
- @import 'elements/govuk-template-base';
- @import 'elements/tables';
+@import 'font_stack';
+@import 'elements/govuk-template-base';
+@import 'elements/tables';
+@import 'elements/elements-typography';
  

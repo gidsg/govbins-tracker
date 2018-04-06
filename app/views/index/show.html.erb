@@ -2,7 +2,9 @@
 <% register_name = la.get_register_definition.item.value['register'] %>
 <table>
 <thead>
-<th colspan="4"><%=register_name%> 
+<th class="heading-large" colspan="1"><%=register_name%></th> 
+<%stats=register_bin_stats(la, @image_path_matched_to_name)%>
+<th class="heading-medium" colspan="3">Local authorities: <%=stats[:register_count]%>, Bins: <%=stats[:has_bin_count] %>, Coverage: <%=stats[:percentage_complete]%></td>
 <tr>
 <th>Curie</th>
 <th>Name</th>
@@ -22,12 +24,6 @@
     <td><%=link_to_if has_bin, img_tag, image_path(@image_path_matched_to_name, name), target: '_blank' %></td>
 </tr>
 </tbody>
-  <% end%>
-  <tfoot>
-        <tr>
-        <%stats=register_bin_stats(la, @image_path_matched_to_name)%>
-            <td colspan="4">Local authorities: <%=stats[:register_count]%>, Bins: <%=stats[:has_bin_count] %>, Percentage coverage: <%=stats[:percentage_complete]%></td>
-        </tr>
-    </tfoot>
+<% end%>
 <% end %>
 </table>
