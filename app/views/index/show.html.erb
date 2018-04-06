@@ -1,31 +1,45 @@
-<h1 class="heading-xlarge"><%=link_to '#govbins', 'http://govbins.uk'%> completion tracker</h1>
-<% @local_authority_registers.each do |la| %>
-<% register_name = la.get_register_definition.item.value['register'] %>
-<% register_url = la.instance_variable_get(:@register_url)%>
-<table>
-<thead>
-<th class="heading-large" colspan="1"><%=link_to register_name, register_url.to_s%></th> 
-<%stats=register_bin_stats(la, @image_path_matched_to_name)%>
-<th class="heading-medium" colspan="3">Local authorities: <%=stats[:register_count]%>, Bins: <%=stats[:has_bin_count] %>, Coverage: <%=stats[:percentage_complete]%></td>
-<tr>
-<th>Key</th>
-<th>Name</th>
-<th>Has Bin?</th>
-<th>Bin Pic</th>
-</tr>
-</thead>
-<tbody>
-  <% la.get_records.sort_by{|r| r.entry.key}.each do |r| %>
-  <% name = r.item.value['name'] %>
-  <% has_bin = has_bin?(@image_path_matched_to_name, name) %>
-  <% img_tag = image_tag(image_path(@image_path_matched_to_name, name), height: '40', width: '30') if has_bin %>
-<tr>
-    <td><%=link_to r.entry.key, "#{register_url}/record/#{r.entry.key}"%></td>
-    <td><%=name%></td>
-    <td><%=has_bin ? '✅': '❌'%></td>
-    <td><%=link_to_if has_bin, img_tag, image_path(@image_path_matched_to_name, name), target: '_blank' %></td>
-</tr>
-</tbody>
-<% end%>
-<% end %>
-</table>
+<main id="content" class="container" role='main'>
+  <div class="grid-row">
+    <div class="column-full">
+      <h1 class="heading-xlarge"><%= link_to '#govbins', 'http://govbins.uk'%> completion tracker</h1>
+      <% @local_authority_registers.each do |la| %>
+        <% register_name = la.get_register_definition.item.value['register'] %>
+        <% register_url = la.instance_variable_get(:@register_url) %>
+        <% stats = register_bin_stats(la, @image_path_matched_to_name) %>
+        <h2 class="heading-large">
+          <%= link_to register_name, register_url.to_s %>
+          <span class="heading-secondary">Local authorities: <%=stats[:register_count]%>, Bins: <%=stats[:has_bin_count] %>, Coverage: <%=stats[:percentage_complete]%></span>
+        </h2>
+        <table>
+          <colgroup>
+            <col width='10%'>
+            <col width='50%'>
+            <col width='20%'>
+            <col width='20%'>
+          </colgroup>
+          <thead>
+              <tr>
+                <th>Key</th>
+                <th>Name</th>
+                <th>Has Bin?</th>
+                <th>Bin Pic</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% la.get_records.sort_by{|r| r.entry.key}.each do |r| %>
+                <% name = r.item.value['name'] %>
+                <% has_bin = has_bin?(@image_path_matched_to_name, name) %>
+                <% img_tag = image_tag(image_path(@image_path_matched_to_name, name), height: '40', width: '30') if has_bin %>
+                <tr>
+                  <td><%= link_to r.entry.key, "#{register_url}/record/#{r.entry.key}"%></td>
+                  <td><%= name %></td>
+                  <td><%= has_bin ? '✅': '❌' %></td>
+                  <td><%=link_to_if has_bin, img_tag, image_path(@image_path_matched_to_name, name), target: :blank %></td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </main>

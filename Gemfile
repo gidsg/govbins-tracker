@@ -13,6 +13,7 @@ gem 'octokit'
 gem 'faraday-http-cache'
 gem 'govuk_elements_rails'
 gem 'govuk_frontend_toolkit'
+gem 'govuk_template'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
