@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## To run
+Create a [Github OAuth App](https://github.com/settings/developers) to get credentials
 
-Things you may want to cover:
+`export GITHUB_CLIENT_ID=YOUR-CLIENT-ID`
 
-* Ruby version
+`export GITHUB_CLIENT_SECRET=YOUR-SECRET`
 
-* System dependencies
+`bundle install`
 
-* Configuration
+`rails s`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
