@@ -12,6 +12,7 @@ gem 'octokit'
 gem 'faraday-http-cache'
 gem 'govuk_elements_rails'
 gem 'govuk_frontend_toolkit'
+gem 'govuk_template'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

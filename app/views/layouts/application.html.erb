@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Govbins matcher</title>
-    <%= csrf_meta_tags %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= csrf_meta_tags %>
+<% end %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<% content_for :header_class, 'with-proposition' %>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<% content_for :page_title, '#govbins completion tracker' %>
+
+<%= render file: 'layouts/govuk_template' %>
