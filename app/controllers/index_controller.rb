@@ -8,11 +8,9 @@ class IndexController < ApplicationController
     )
     contents = Octokit.contents('HarryTrimble/govbins.uk', path: 'images')
     image_paths = contents.select { |e| e.download_url.to_s.end_with? '.jpg' }.map(&:download_url)
-    puts("IMAGE COUNT #{image_paths.length}")
     @image_path_matched_to_name = image_paths.map { |ip|
       { name: ip.end_with?('St-Helens.jpg') ? 'St. Helens' :  ip.split('/images/')[1].split('.')[0].tr('-', ' '), path: ip }
     }
-    puts(@image_path_matched_to_name)
 
     registers_client = RegistersClient::RegisterClientManager.new
     local_authorities = ['local-authority-eng', 'local-authority-nir', 'local-authority-sct', 'principal-local-authority']

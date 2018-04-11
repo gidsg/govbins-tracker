@@ -1,10 +1,9 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'application' %>
-  <%= csrf_meta_tags %>
 <% end %>
 
-<% content_for :header_class, 'with-proposition' %>
-
 <% content_for :page_title, '#govbins completion tracker' %>
+
+<% content_for :body_classes, 'wrapper'%>
 
 <%= render file: 'layouts/govuk_template' %>

@@ -32,3 +32,7 @@ table img {
 a:visited {
   color: $govuk-blue;
 }
+
+#global-header, #global-header-bar {
+  display: none;
+}
